@@ -1062,9 +1062,15 @@ Module HDMod
           TYPE(hyperdual) :: res
                 
           res%x     = qleft%x + qright%x
-          res%dx1   = qleft%dx1 + qright%dx1
-          res%dx2   = qleft%dx2 + qright%dx2
-          res%dx1x2 = qleft%dx1x2 + qright%dx1x2
+	  if (res%x .eq. 0.d0) then
+   	      res%dx1   = 0.d0
+   	      res%dx2   = 0.d0
+   	      res%dx1x2   = 0.d0
+          else
+	      res%dx1   = qleft%dx1 + qright%dx1
+              res%dx2   = qleft%dx2 + qright%dx2
+              res%dx1x2 = qleft%dx1x2 + qright%dx1x2
+	  endif
                     
         end function hdual_plus_hdual
   
