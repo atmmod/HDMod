@@ -29,37 +29,32 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 
 # Summary
 
-The forces on stars, galaxies, and dark matter under external gravitational
-fields lead to the dynamical evolution of structures in the universe. The orbits
-of these bodies are therefore key to understanding the formation, history, and
-future state of galaxies. The field of "galactic dynamics," which aims to model
-the gravitating components of galaxies to study their structure and evolution,
-is now well-established, commonly taught, and frequently used in astronomy.
-Aside from toy problems and demonstrations, the majority of problems require
-efficient numerical tools, many of which require the same base code (e.g., for
-performing numerical orbit integration).
+The calculation of derivatives in scientific programs is essential to a number of
+applications. Derivatives inform scientists about how particular output variables 
+will respond to changes in particular input variables. The calculation of exact 
+derivatives in complex models remain a challenge because of the difficulty to 
+write out exact equations. Linear approximation of derivatives is prone to truncation 
+and cancellation errors. We developed a program which applies a numerical technique
+that can compute the exact first- and second-order derivative of a model output
+variable with respect to one or two input variable. This program is invaluable to
+fields including simulation of weather and air pollutants in the atmosphere, and 
+can be applied to other fields including finance and engineering, where derivatives
+are of interest to the users of the program. 
 
 # Statement of need
 
-`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for `Gala` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
-`astropy.coordinates`).
+`HDMod` is a module which defines the operation principles of hyperdual numbers. Fike and Alonso
+proposed the calculation of derivatives using hyperdual numbers in 2011 [@Fike:2011]. 
+Because of the delicate definition of hyperdual numbers, the first- and second-order 
+derivatives calculated by the method is free from traditionally existing truncation 
+and cancellation errors. 
 
-`Gala` was designed to be used by both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in `Gala` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+`HDMod` was originally developed for application in the Community Multiscale Air 
+Quality model (CMAQ) [@Liu:2024]. First- and second-order derivatives of pollutant
+concentrations with respect to emissions were presented in the Liu, 2024 paper. 
+In theory, `HDMod` can be applied to other field where derivatives are of interest
+to researchers, and traditional method doesn't yield a good result due to subtractive 
+cancellation and truncation errors. 
 
 # Mathematics
 
