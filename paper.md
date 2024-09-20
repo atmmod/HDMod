@@ -1,35 +1,24 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: 'HDMod: A Fortran program for exact derivative calculations in scientific programs'
 tags:
-  - Python
-  - astronomy
-  - dynamics
-  - galactic dynamics
-  - milky way
+  - Fortran
+  - derivative calculation
+  - sensitivity calculation
+  - chemical tranpsort models
 authors:
-  - name: Adrian M. Price-Whelan
-    orcid: 0000-0000-0000-0000
+  - name: Jiachen Liu
+    orcid: 0009-0004-9331-3168
     equal-contrib: true
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
-  - name: Author Without ORCID
-    equal-contrib: true # (This is how you can denote equal contributions between multiple authors)
-    affiliation: 2
-  - name: Author with no affiliation
-    corresponding: true # (This is how to denote the corresponding author)
-    affiliation: 3
-  - given-names: Ludwig
-    dropping-particle: van
-    surname: Beethoven
-    affiliation: 3
+    affiliation: 1
+  - name: Shannon L. Capps
+    orcid: 0000-0002-6872-6604
+    equal-contrib: true
+    affiliation: 1
 affiliations:
- - name: Lyman Spitzer, Jr. Fellow, Princeton University, USA
+ - name: Department of Civil, Architectural, & Environmental Engineering, Drexel University, USA
    index: 1
-   ror: 00hx57361
- - name: Institution Name, Country
-   index: 2
- - name: Independent Researcher, Country
-   index: 3
-date: 13 August 2017
+   ror: 04bdffz58
+date: 20 September 2024
 bibliography: paper.bib
 
 # Optional fields if submitting to a AAS journal too, see this blog post:
@@ -114,7 +103,6 @@ Figure sizes can be customized by adding an optional second parameter:
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
+This work is supported by National Science Foundation CAREER Award grant no. 1944669 to Shannon L. Capps. We also want to acknowledge the contribution from Ryan P. Russell for providing a testing framework of the multicomplex numbers, which inspired the development of a testing framework for the hyperdual numbers. 
 
 # References
