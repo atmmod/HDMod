@@ -25,13 +25,6 @@ Module HDMod
           real(PRhyd) :: dx1x2
       END TYPE
       
-      !--- DEFINITION OF SINGLE PRECISION HYPERDUAL TYPE  soa 18/02/24
-	  TYPE hyperdualSp
-    	  real(SPRhyd) :: x
-    	  real(SPRhyd) :: dx1
-    	  real(SPRhyd) :: dx2
-    	  real(SPRhyd) :: dx1x2
-	  END TYPE
 	  
 	  
   
@@ -56,10 +49,7 @@ Module HDMod
           hdual_4d_assign_dble_4d, hdual_4d_assign_dble_4d_SPRhyd, hdual_4d_assign_dble, hdual_4d_assign_int, &
           hdual_4d_assign_int_4d, hdual_4d_assign_hdual, hdual_5d_assign_dble, hdual_assign_dble_SPRhyd, &
           hdual_6d_assign_dble, hdual_matrix_assign_dble_SPRhyd, hdual_tens_assign_dble_tens_SPRhyd, &
-          hdual_matrix_assign_dble_matrix_SPRhyd, & !Single precision assignments from below: soa 18/02/24
-          shdual_assign_shdual, shdual_assign_hdual, shdual_assign_dble, shdual_assign_sngl, &
-          shdual_matrix_assign_hdual_matrix, shdual_matrix_assign_dble, shdual_matrix_assign_shdual_matrix, &
-          shdual_matrix_assign_sngl
+          hdual_matrix_assign_dble_matrix_SPRhyd
  
       end interface 
     
@@ -394,32 +384,6 @@ Module HDMod
         
         
         
-        subroutine shdual_assign_shdual(qleft, qright)  !soa 18/02/24
-  
-          implicit none
-          TYPE(hyperdualsp), intent(out) :: qleft
-          TYPE(hyperdualsp), intent(in)  :: qright
-  
-          qleft%x     = qright%x
-          qleft%dx1   = qright%dx1
-          qleft%dx2   = qright%dx2
-          qleft%dx1x2 = qright%dx1x2
-  
-        end subroutine shdual_assign_shdual
-        
-        
-        subroutine shdual_assign_hdual(qleft, qright)  !soa 18/02/24
-  
-          implicit none
-          TYPE(hyperdualsp), intent(out) :: qleft
-          TYPE(hyperdual), intent(in)  :: qright
-  
-          qleft%x     = REAl(qright%x, SPRhyd)
-          qleft%dx1   = REAl(qright%dx1, SPRhyd)
-          qleft%dx2   = REAl(qright%dx2, SPRhyd)
-          qleft%dx1x2 = REAl(qright%dx1x2, SPRhyd)
-  
-        end subroutine shdual_assign_hdual
         
   
         subroutine hdual_assign_dble(qleft, xright) 
@@ -434,32 +398,6 @@ Module HDMod
           qleft%dx1x2 = 0.0_PRhyd
     
         end subroutine hdual_assign_dble
-        
-        subroutine shdual_assign_dble(qleft, xright) 
-            
-          implicit none
-          TYPE(hyperdualsp), intent(out)  :: qleft
-          real(PRhyd), intent(in)       :: xright
-  
-          qleft%x     = xright
-          qleft%dx1   = 0.0_SPRhyd
-          qleft%dx2   = 0.0_SPRhyd
-          qleft%dx1x2 = 0.0_SPRhyd
-    
-        end subroutine shdual_assign_dble
-        
-        subroutine shdual_assign_sngl(qleft, xright) 
-            
-          implicit none
-          TYPE(hyperdualsp), intent(out)  :: qleft
-          real(SPRhyd), intent(in)       :: xright
-  
-          qleft%x     = xright
-          qleft%dx1   = 0.0_SPRhyd
-          qleft%dx2   = 0.0_SPRhyd
-          qleft%dx1x2 = 0.0_SPRhyd
-    
-        end subroutine shdual_assign_sngl
         
         
         subroutine hdual_assign_dble_SPRhyd(qleft, xright) 
@@ -617,32 +555,6 @@ Module HDMod
         
         end subroutine hdual_matrix_assign_hdual_matrix
         
-        subroutine shdual_matrix_assign_shdual_matrix(qleft, qright) 
-        
-          implicit none
-          TYPE(hyperdualsp), dimension(:,:), intent(out)  :: qleft
-          TYPE(hyperdualsp), dimension(:,:), intent(in)   :: qright
-        
-          qleft%x     = qright%x
-          qleft%dx1   = qright%dx1
-          qleft%dx2   = qright%dx2
-          qleft%dx1x2 = qright%dx1x2
-        
-        end subroutine shdual_matrix_assign_shdual_matrix
-        
-        subroutine shdual_matrix_assign_hdual_matrix(qleft, qright) 
-        
-          implicit none
-          TYPE(hyperdualsp), dimension(:,:), intent(out)  :: qleft
-          TYPE(hyperdual), dimension(:,:), intent(in)   :: qright
-        
-          qleft%x     = REAl(qright%x, SPRhyd)
-          qleft%dx1   = REAl(qright%dx1, SPRhyd)
-          qleft%dx2   = REAl(qright%dx2, SPRhyd)
-          qleft%dx1x2 = REAl(qright%dx1x2, SPRhyd)
-        
-        end subroutine shdual_matrix_assign_hdual_matrix
-  
   
         subroutine hdual_matrix_assign_dble(qleft, xright) 
         
@@ -657,32 +569,6 @@ Module HDMod
         
         end subroutine hdual_matrix_assign_dble
         
-        subroutine shdual_matrix_assign_sngl(qleft, xright) 
-        
-          implicit none
-          TYPE(hyperdualsp), dimension(:,:), intent(out)  :: qleft
-          real(SPRhyd), intent(in)                       :: xright
-        
-          qleft%x     = xright
-          qleft%dx1   = 0.0_SPRhyd
-          qleft%dx2   = 0.0_SPRhyd
-          qleft%dx1x2 = 0.0_SPRhyd
-        
-        end subroutine shdual_matrix_assign_sngl
-        
-        
-        subroutine shdual_matrix_assign_dble(qleft, xright) 
-        
-          implicit none
-          TYPE(hyperdualsp), dimension(:,:), intent(out)  :: qleft
-          real(PRhyd), intent(in)                       :: xright
-        
-          qleft%x     = REAL(xright, SPRhyd)
-          qleft%dx1   = 0.0_SPRhyd
-          qleft%dx2   = 0.0_SPRhyd
-          qleft%dx1x2 = 0.0_SPRhyd
-        
-        end subroutine shdual_matrix_assign_dble
         
         subroutine hdual_matrix_assign_dble_SPRhyd(qleft, xright) 
         
